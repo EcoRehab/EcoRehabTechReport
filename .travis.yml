@@ -1,0 +1,9 @@
+before_install:
+- sudo apt-get update && sudo apt-get install texlive-latex-base texlive-latex-recommended
+  texlive-latex-extra texlive-fonts-recommended
+script: bash ./deploy.sh
+env:
+  global:
+  - ENCRYPTION_LABEL: "f960741149b4"
+  - COMMIT_AUTHOR_EMAIL: "travis@travis-ci.org"
+  
