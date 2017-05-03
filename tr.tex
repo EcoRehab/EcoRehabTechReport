@@ -2,7 +2,9 @@
 \usepackage{microtype}
 \usepackage{fullpage}
 \usepackage{url}
-\usepackage{pdfpages}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
 
 \title{\\
   Computer Science Department\\
@@ -79,10 +81,81 @@ As a part of Dr. Paul Gestwicki's research and design course (CS 691) at Ball St
 This report presents the design process used by our class for the donation system.
 
 \section*{Design}
+Donation systems are a primary component for raising funds for nonprofit organizations. Though a donation system can be as simple as having a user input a monetary value and then payment information, this is not the way our group originally approached developing the system for ecoREHAB. The first step that was taken involved meeting with both ecoREHAB board members and Kate to discuss their ideas on how they would like donations to be processed and accepted. From this initial meeting, several key points were made that would go on to serve as a foundation for how we believed the donation system should function and appear like to users. A few major points from this meeting included the following:
+\begin{itemize}
+	\item{Show different categories involved in building a house.}
+	\item{Give user eco-friendly information when a category is selected.}
+	\item{Interactive "house" or display to allow user to select type/amount of donation.}
+\end{itemize}
+Using these concepts, our team's next step was to identify a process to implement the ideas.
+
+In order to complete a design of the desired ecoREHAB donation system, our process began with drawing sketches of how a potential donation page would look. At this point we were aware that Kate and her team had acquired the Pena Wordpress theme to develop the new website for ecoREHAB, so our implementation for the donation system would be integrated into this website. Different members of our team drew a variety of preliminary design sketches to be evaluated. Several of these basic designs are shown below in Figures \ref{fig:1}-\ref{fig:3}.
+\begin{figure}[H]
+	\includegraphics[width=15cm, height=10cm]{example}
+	\captionsetup{justification=centering}
+	\caption{A basic example of a donation page.}
+	\label{fig:1}
+\end{figure}
+\begin{figure}[H]
+	\includegraphics[width=7cm, height=9cm]{Example4}
+	\captionsetup{justification=centering}
+	\centering
+	\caption{A donation page with unique symbols to identify the different categories.}
+	\label{fig:2}
+\end{figure}
+\begin{figure}[H]
+	\includegraphics[width=10cm, height=10cm]{Example5}
+	\captionsetup{justification=centering}
+	\centering
+	\caption{A simple donation page that incorporates the ability \\ to view more information about each category.}
+	\label{fig:3}
+\end{figure}
+
+Once we had these basic sketches in hand, our team debated which features were good and/or necessary as well as those deemed to be out of the scope of the project. From his discussion, it was determined that the points of emphasis that would need to be implemented on the donation page included showing the different categories involved with building a house, a short description of each category, and adding to the donation based on an amount within a category. Since the original idea was to create an interactive experience for when the user makes a donation, we determined that the interactivity would be a result from clicking on a category's symbol, resulting in the information display as well as highlighting a portion of a house related to the category. Before attempting to implement this design, we developed a paper prototype to test its effectiveness. The prototype our team created can be viewed in the Appendix.
+
+After testing the paper prototype internally, we needed some external validation before moving towards implementing the system we had designed. During a meeting with Kate, she was able to test our prototype and provide feedback. This feedback included both how she thought the prototype worked and her thoughts on how the donation page may need to appear on the website. From this meeting, our team determined that, although the interactivity element for ecoREHAB's donations is interesting, it feel out of the scope of our project due to time constraint and lack of experience with graphic design. At this point in the process, we determined that a basic donation page was needed, which included information and/or prompts about donating to ecoREHAB and buttons to input the donation amount for a user.
+
+With a new look at how the donation page needed to function, our team began to develop a web page that would include only text and donation buttons. We developed this donation page using HTML and AngularJS. After implementing a new aspect of the donation page, we tested it by loading the web page into our development environment, which included the Pena theme being used by Kate's team on the new ecoREHAB website. One aspect of doing a donation page that came into play at this point was how to process the donations. We determined that using a third party software would be best, so we set a PayPal account that would process all the donations. The donation buttons were made to take the user to PayPal to finish paying for the donation, and upon completion the user was then returned to the ecoREHAB website. 
+
+After thoroughly testing the donation page we developed, the last step in the process was to add the page onto Kate's website. At this point we ran into a major problem. While testing, we had been using a Wordpress.org environment, whereas Kate's team had been working in a Wordpress.com environment. We found out that Wordpress.com does not allow for JavaScript to be used. Thus, the donation button, which was developed using AngularJS, could not work. After diagnosing the problem, we were able to do a workaround by making buttons that Wordpress.com allowed (using \url{<https://dabuttonfactory.com>}) to include the redirection from the ecoREHAB site to PayPal so donations could be completed. A small glimpse of how the donation page turned out is shown below in Figure \ref{fig:4}.
+\begin{figure}[H]
+	\includegraphics[scale=0.5]{Donation}
+	\captionsetup{justification=centering}
+	\centering
+	\caption{Part of the donation page developed by our team.}
+	\label{fig:4}
+\end{figure}
+The final donation page we created can be found on Kate's website at \url{<https://loveandtruthiness.wordpress.com/donatevolunteer/donate/>}.
 
 \section*{Conclusions and Future Work}
+The design process of the donation system for the non-profit organization ecoREHAB has been presented in this report. After developing several different preliminary designs for the donation web page were made, the main aspects for the interactive element of the system were established. These included clickable category symbols that would allow users to view extra eco-friendly information about the selected category. After testing this interactive element, although deemed useful, it was determined that with that this component could not be comleted due to a lack of certain graphic design skills and the time remaining to the project's due date. The interactivity was also not necessary for the donation system to function. This led to our team creating a simple donation system using buttons that the user can interact with when attempting to donate to ecoREHAB.
 
+In the future, this interactive donation system can easily be implemented as described in this report. The team completing this task will need some graphic design experience in order to ensure high quality of the interactive images. Beyond what has been described, another potential avenue for donation interactivity is to keep progress of the donations coming in. In the context of building a house, progress could include the donation amount that has already been put towards a house and the remaining amount of money needed to complete the project. An design example of such a system is shown in Figure \ref{fig:5}.
+\begin{figure}[H]
+	\includegraphics[page=1, scale=0.5]{Example3}
+	\captionsetup{justification=centering}
+	\centering
+	\caption{Design that included progress bars towards the total amount needed to build a house.}
+	\label{fig:5}
+\end{figure}
 \section*{Appendix}
-\includepdf[pages=-]{PaperPrototype.pdf}
+\begin{figure}[H]
+	\includegraphics[page=1, scale=0.75]{PaperPrototype}
+\end{figure}
+\begin{figure}[H]
+	\includegraphics[page=2, scale=0.75]{PaperPrototype}
+\end{figure}
+\begin{figure}[H]
+	\includegraphics[page=3, scale=0.75]{PaperPrototype}
+\end{figure}
+\begin{figure}[H]
+	\includegraphics[page=4, scale=0.75]{PaperPrototype}
+\end{figure}
+\begin{figure}[H]
+	\includegraphics[page=5, scale=0.75]{PaperPrototype}
+\end{figure}
+\begin{figure}[H]
+	\includegraphics[page=6, scale=0.75]{PaperPrototype}
+\end{figure}
 
 \end{document}
